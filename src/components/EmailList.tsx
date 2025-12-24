@@ -7,7 +7,7 @@ interface EmailListProps {
   selectedId: string | null;
   onSelect: (id: string) => void;
   loading: boolean;
-  // HATA ÇÖZÜMÜ: lang eklendi
+  // EKLENEN EKSİK PROP:
   lang: string;
 }
 
@@ -48,7 +48,7 @@ const EmailList: React.FC<EmailListProps> = ({ emails, selectedId, onSelect, loa
           >
             <div className="flex justify-between items-start mb-2">
               <span className="text-[10px] font-black text-red-500 uppercase tracking-widest truncate max-w-[150px]">
-                {/* HATA ÇÖZÜMÜ: Obje render hatası giderildi */}
+                {/* HATA ÇÖZÜMÜ: Obje render hatasını engelle */}
                 {typeof email.from === 'object' ? (email.from as any).address : String(email.from)}
               </span>
               <div className="flex items-center gap-2 text-slate-500">

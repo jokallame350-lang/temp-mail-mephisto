@@ -1,27 +1,27 @@
 import React from 'react';
 import { Mail, Shield, Globe, Moon, Sun, Crown } from 'lucide-react';
 import { Mailbox } from '../types';
-import { Language, translations } from '../translations';
+// Language tipini basitçe string olarak alıyoruz, import hatasını önlemek için
+type Language = 'en' | 'tr';
 
 interface HeaderProps {
   accounts: Mailbox[];
   currentAccount: Mailbox | null;
   onSwitchAccount: (id: string) => void;
   onNewAccount: () => void;
-  // EKLENDİ: App.tsx'ten gelen eksik prop
+  // EKLENEN EKSİK PROP:
   onOpenPremium: () => void;
   theme: 'dark' | 'light';
   toggleTheme: () => void;
-  lang: Language;
-  setLang: (lang: Language) => void;
+  lang: string;
+  setLang: (lang: any) => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ 
   accounts, currentAccount, onSwitchAccount, onNewAccount, onOpenPremium, 
   theme, toggleTheme, lang, setLang 
 }) => {
-  const t = translations[lang];
-
+  
   return (
     <header className="w-full max-w-7xl mx-auto p-4 flex items-center justify-between z-20 relative">
       <div className="flex items-center gap-3">
@@ -40,7 +40,6 @@ const Header: React.FC<HeaderProps> = ({
           className="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-slate-500 dark:text-slate-400"
         >
           <Globe className="w-4 h-4" />
-          <span className="sr-only">Switch Language</span>
         </button>
 
         <button 

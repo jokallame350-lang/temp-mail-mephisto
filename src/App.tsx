@@ -33,7 +33,6 @@ const App: React.FC = () => {
   const STORAGE_KEY = 'nexus_accounts_v5';
   const activeAccount = accounts.find(a => a.id === activeAccountId) || null;
 
-  // --- TEMA VE BİLDİRİM MANTIĞI ---
   const playNotificationSound = () => {
     const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
     audio.play().catch(() => {});
@@ -50,7 +49,6 @@ const App: React.FC = () => {
     theme === 'dark' ? root.classList.add('dark') : root.classList.remove('dark');
   }, [theme]);
 
-  // --- HESAP YÖNETİMİ ---
   const createQuickAccount = async () => {
     if (!isPremium && accounts.length >= 3) { setShowPremiumModal(true); return; }
     setIsLoadingAccount(true);
@@ -75,7 +73,6 @@ const App: React.FC = () => {
 
   useEffect(() => { if (accounts.length > 0) localStorage.setItem(STORAGE_KEY, JSON.stringify(accounts)); }, [accounts]);
 
-  // --- MAİL ÇEKME ---
   const fetchEmails = useCallback(async () => {
     if (!activeAccount) return;
     try {
@@ -116,8 +113,6 @@ const App: React.FC = () => {
 
   return (
     <div className={`min-h-screen flex flex-col font-['Sora'] transition-colors duration-500 ${theme === 'dark' ? 'bg-[#050505] text-slate-200' : 'bg-slate-50 text-slate-900'} overflow-x-hidden`}>
-      
-      {/* ALEV GEÇİŞ KATMANI */}
       <div className={`fire-transition-overlay ${isFireTransition ? 'fire-transition-active' : ''}`} />
 
       <Header 
@@ -144,11 +139,13 @@ const App: React.FC = () => {
             The Ultimate Shield <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600">For Your Privacy.</span>
           </h1>
+          
           <AddressBar 
             mailbox={activeAccount} 
             isLoading={isLoadingAccount} 
             onRefresh={fetchEmails} 
             lang={lang} 
+            progress={progress}
           />
         </div>
 

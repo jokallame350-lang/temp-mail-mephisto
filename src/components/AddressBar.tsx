@@ -7,8 +7,9 @@ interface AddressBarProps {
   isLoading: boolean;
   onRefresh: () => void;
   lang: string;
-  progress: number;
-  // HATA ÇÖZÜMÜ: App.tsx göndermediği için bunları opsiyonel (?) yapıyoruz
+  // EKLENEN EKSİK PROP:
+  progress?: number; 
+  // Opsiyonel yaparak hatayı engelliyoruz:
   isRefreshing?: boolean;
   onChange?: () => void;
   onDelete?: () => void;
@@ -16,7 +17,7 @@ interface AddressBarProps {
 }
 
 const AddressBar: React.FC<AddressBarProps> = ({ 
-  mailbox, isLoading, onRefresh, lang, progress 
+  mailbox, isLoading, onRefresh, lang, progress = 0 
 }) => {
   const [copied, setCopied] = useState(false);
   const [showQR, setShowQR] = useState(false);
