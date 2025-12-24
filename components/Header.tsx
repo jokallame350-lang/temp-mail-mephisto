@@ -62,8 +62,7 @@ const Header: React.FC<HeaderProps> = ({
             className="flex items-center gap-3 py-2 px-4 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/5 group"
           >
             <div className="relative p-2 rounded-lg bg-white/5 border border-white/5 group-hover:border-red-500/30 transition-colors">
-               {/* KENDI LOGON - MASAÜSTÜ */}
-               <img src="/icon.jpg" alt="Logo" className="w-6 h-6 object-contain" />
+               <Flame className="w-5 h-5 text-red-500" />
             </div>
             
             <div className="text-left">
@@ -100,8 +99,7 @@ const Header: React.FC<HeaderProps> = ({
           className="flex-grow flex flex-col justify-center overflow-hidden cursor-pointer"
         >
           <div className="flex items-center gap-2 text-white">
-             {/* KENDI LOGON - MOBİL */}
-             <img src="/icon.jpg" alt="Logo" className="w-5 h-5 object-contain" />
+             <Flame className="w-4 h-4 text-red-500" />
              <span className="font-mono text-sm font-semibold truncate">
                {currentAccount ? currentAccount.address : 'Loading...'}
              </span>
